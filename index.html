@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>稀饭动漫-在线追番推荐_新番旧番讨论社区</title>
+  <meta name="description" content="稀饭动漫是面向追番爱好者的内容专题页，汇集新番推荐、经典旧番盘点、声优与制作公司解析、社区讨论与追更指南。在这里可以按题材筛选、查看热门榜单、参与评论互动，轻松找到适合自己的动漫作品。">
+  <meta name="keywords" content="稀饭动漫,追番推荐,新番动漫,动漫社区,声优解析">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍚</text></svg>">
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --surface-soft: #f0f4fa;
+      --ink: #1d2b3a;
+      --ink-secondary: #4f5e6f;
+      --muted: #7a8a9a;
+      --brand: #3b7dd8;
+      --brand-soft: #e8f0fe;
+      --accent: #f2a33c;
+      --accent-soft: #fff4e0;
+      --line: #e2e8f0;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 2px 8px rgba(20, 40, 70, 0.04);
+      --shadow-md: 0 8px 28px rgba(20, 40, 70, 0.08);
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+    .wrapper { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    /* header */
+    .xh-topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.92);
+    }
+    .xh-topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 24px;
+    }
+    .xh-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--brand);
+      white-space: nowrap;
+    }
+    .xh-logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #3b7dd8, #6aa8f5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .xh-nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .xh-nav-links a {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: var(--ink-secondary);
+      transition: 0.2s;
+    }
+    .xh-nav-links a:hover {
+      background: var(--brand-soft);
+      color: var(--brand);
+    }
+    .xh-search-mini {
+      display: flex;
+      align-items: center;
+      background: var(--surface-soft);
+      border-radius: 24px;
+      padding: 4px 4px 4px 16px;
+      border: 1px solid transparent;
+      transition: 0.2s;
+    }
+    .xh-search-mini:focus-within {
+      border-color: var(--brand);
+      background: #fff;
+    }
+    .xh-search-mini input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 14px;
+      width: 160px;
+      color: var(--ink);
+    }
+    .xh-search-mini button {
+      border: none;
+      background: var(--brand);
+      color: #fff;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    /* banner */
+    .xh-hero {
+      background: linear-gradient(135deg, #edf3fc 0%, #f9fbff 40%, #fff9f0 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 48px 0 40px;
+    }
+    .xh-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .xh-hero h1 {
+      font-size: 36px;
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+    .xh-hero h1 span { color: var(--brand); }
+    .xh-hero-desc {
+      font-size: 16px;
+      color: var(--ink-secondary);
+      margin-bottom: 24px;
+      max-width: 480px;
+    }
+    .xh-hero-search {
+      display: flex;
+      background: #fff;
+      border-radius: 40px;
+      padding: 6px 6px 6px 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line);
+      margin-bottom: 24px;
+      max-width: 460px;
+    }
+    .xh-hero-search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      background: transparent;
+      min-width: 0;
+    }
+    .xh-hero-search button {
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      border-radius: 40px;
+      padding: 10px 22px;
+      font-size: 15px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .xh-quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .xh-quick-tags a {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--line);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      color: var(--ink-secondary);
+      backdrop-filter: blur(4px);
+      transition: 0.2s;
+    }
+    .xh-quick-tags a:hover { background: #fff; border-color: var(--brand); color: var(--brand); }
+    .xh-hero-art {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .xh-hero-card {
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line);
+      transition: 0.25s;
+    }
+    .xh-hero-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .xh-hero-card-cover {
+      height: 100px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px;
+      background: linear-gradient(145deg, #dbe7f8, #b8d0f0);
+    }
+    .xh-hero-card-cover.c2 { background: linear-gradient(145deg, #fde8d0, #f7c99c); }
+    .xh-hero-card-cover.c3 { background: linear-gradient(145deg, #d5f0e4, #a8dfc8); }
+    .xh-hero-card-cover.c4 { background: linear-gradient(145deg, #f3d6f0, #dba8d4); }
+    .xh-hero-card h4 { font-size: 14px; margin-bottom: 4px; }
+    .xh-hero-card p { font-size: 12px; color: var(--muted); }
+    /* section */
+    section { padding: 52px 0; }
+    .xh-section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .xh-section-head h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .xh-section-head .xh-sub { color: var(--muted); font-size: 14px; }
+    .xh-more-link { font-size: 14px; color: var(--brand); font-weight: 500; }
+    /* cards */
+    .xh-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .xh-card {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .xh-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .xh-card-tagrow { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .xh-tag {
+      font-size: 11px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .xh-tag.orange { background: var(--accent-soft); color: #b06d1e; }
+    .xh-card h3 { font-size: 17px; margin-bottom: 8px; line-height: 1.4; }
+    .xh-card p { font-size: 13px; color: var(--ink-secondary); flex: 1; margin-bottom: 12px; }
+    .xh-card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+    /* list update */
+    .xh-update-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 32px;
+    }
+    .xh-update-item {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: flex-start;
+    }
+    .xh-update-time {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      min-width: 68px;
+    }
+    .xh-update-body h4 { font-size: 15px; margin-bottom: 2px; }
+    .xh-update-body p { font-size: 13px; color: var(--ink-secondary); }
+    /* categories */
+    .xh-cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 14px;
+    }
+    .xh-cat-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 18px 12px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+    .xh-cat-item:hover { background: var(--brand-soft); border-color: var(--brand); color: var(--brand); }
+    /* deep analysis */
+    .xh-deep {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .xh-deep h3 { font-size: 20px; margin: 28px 0 12px; }
+    .xh-deep h3:first-child { margin-top: 0; }
+    .xh-deep p { margin-bottom: 16px; color: var(--ink-secondary); font-size: 15px; line-height: 1.75; }
+    .xh-deep ul { margin: 12px 0 20px 20px; color: var(--ink-secondary); font-size: 15px; }
+    .xh-deep li { margin-bottom: 8px; }
+    /* guide */
+    .xh-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .xh-guide-item {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .xh-guide-item h4 { font-size: 16px; margin-bottom: 8px; color: var(--brand); }
+    .xh-guide-item p { font-size: 13px; color: var(--ink-secondary); }
+    /* faq */
+    .xh-faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .xh-faq-item {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .xh-faq-item summary {
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .xh-faq-item summary::-webkit-details-marker { display: none; }
+    .xh-faq-item summary::after { content: "＋"; font-weight: 400; color: var(--muted); font-size: 18px; }
+    .xh-faq-item[open] summary::after { content: "－"; }
+    .xh-faq-item p { margin-top: 12px; font-size: 14px; color: var(--ink-secondary); line-height: 1.7; }
+    /* comments */
+    .xh-comment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .xh-comment {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .xh-comment-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .xh-avatar {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: linear-gradient(135deg, #c7daf5, #9bbef0);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: #fff; font-weight: 600;
+    }
+    .xh-comment-name { font-size: 13px; font-weight: 600; }
+    .xh-comment-date { font-size: 11px; color: var(--muted); margin-left: auto; }
+    .xh-comment p { font-size: 13px; color: var(--ink-secondary); }
+    /* news */
+    .xh-news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+    }
+    .xh-news-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .xh-news-card h4 { font-size: 15px; margin-bottom: 6px; }
+    .xh-news-card .date { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .xh-news-card p { font-size: 13px; color: var(--ink-secondary); }
+    /* footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      padding: 40px 0 28px;
+      margin-top: 20px;
+    }
+    .xh-footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 28px;
+    }
+    .xh-footer-grid h5 { font-size: 14px; margin-bottom: 12px; color: var(--ink); }
+    .xh-footer-grid a { display: block; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .xh-footer-grid a:hover { color: var(--brand); }
+    .xh-footer-bottom {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    /* responsive */
+    @media (max-width: 900px) {
+      .xh-hero-inner { grid-template-columns: 1fr; gap: 28px; }
+      .xh-hero h1 { font-size: 28px; }
+      .xh-update-list { grid-template-columns: 1fr; }
+      .xh-footer-grid { grid-template-columns: 1fr 1fr; }
+      .xh-deep { padding: 24px; }
+      .xh-hero-art { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .xh-topbar-inner { height: auto; padding: 10px 0; flex-wrap: wrap; }
+      .xh-nav-links { order: 3; width: 100%; overflow-x: auto; padding-bottom: 4px; }
+      .xh-search-mini input { width: 100px; }
+      .xh-hero-art { grid-template-columns: 1fr 1fr; }
+      .xh-footer-grid { grid-template-columns: 1fr; }
+      .xh-hero-search { flex-direction: column; background: transparent; box-shadow: none; border: none; padding: 0; gap: 10px; }
+      .xh-hero-search input { background: #fff; border: 1px solid var(--line); border-radius: 40px; padding: 12px 18px; }
+      .xh-hero-search button { width: 100%; }
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 导航 -->
+<header class="xh-topbar">
+  <div class="wrapper xh-topbar-inner">
+    <a href="/#home" class="xh-logo">
+      <span class="xh-logo-badge">稀</span>
+      稀饭动漫
+    </a>
+    <nav class="xh-nav-links">
+      <a href="/#hot">热门推荐</a>
+      <a href="/#update">最新更新</a>
+      <a href="/#category">分类入口</a>
+      <a href="/#deep">深度解析</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#comment">番友讨论</a>
+      <a href="/#news">资讯</a>
+    </nav>
+    <form class="xh-search-mini" onsubmit="return false;">
+      <input type="text" placeholder="搜索番剧、声优、制作公司…" aria-label="搜索">
+      <button type="submit">搜索</button>
+    </form>
+  </div>
+</header>
+
+<!-- Banner -->
+<section class="xh-hero" id="home">
+  <div class="wrapper xh-hero-inner">
+    <div>
+      <h1>稀饭动漫：追番推荐与番剧讨论的社区入口</h1>
+      <p class="xh-hero-desc">
+        从当季新番到经典旧番，按题材、声优、制作公司快速筛选。在这里找到同好、记录追番进度、参与有内容的讨论，让补番和追更都更轻松。
+      </p>
+      <form class="xh-hero-search" onsubmit="return false;">
+        <input type="text" placeholder="输入番剧名、题材或关键词，例如：奇幻、恋爱、MAPPA…" aria-label="搜索番剧">
+        <button type="submit">开始找番</button>
+      </form>
+      <div class="xh-quick-tags">
+        <a href="/#hot">当季新番</a>
+        <a href="/#hot">经典补番</a>
+        <a href="/#category">声优索引</a>
+        <a href="/#category">制作公司</a>
+        <a href="/#update">更新日历</a>
+        <a href="/#deep">番剧解析</a>
+        <a href="/#comment">番友讨论</a>
+      </div>
+    </div>
+    <div class="xh-hero-art">
+      <div class="xh-hero-card">
+        <div class="xh-hero-card-cover"></div>
+        <h4>异世界食堂·续</h4>
+        <p>美食 · 治愈 · 更新至第8话</p>
+      </div>
+      <div class="xh-hero-card">
+        <div class="xh-hero-card-cover c2"></div>
+        <h4>时光代理人 第三季</h4>
+        <p>悬疑 · 奇幻 · 全网热播</p>
+      </div>
+      <div class="xh-hero-card">
+        <div class="xh-hero-card-cover c3"></div>
+        <h4>排球少年!! 剧场版</h4>
+        <p>运动 · 热血 · 高分推荐</p>
+      </div>
+      <div class="xh-hero-card">
+        <div class="xh-hero-card-cover c4"></div>
+        <h4>葬送的芙莉莲</h4>
+        <p>奇幻 · 治愈 · 补番必看</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 热门推荐 -->
+<section id="hot">
+  <div class="wrapper">
+    <div class="xh-section-head">
+      <h2>热门推荐 · 近期番友都在看</h2>
+      <a href="/#hot" class="xh-more-link">查看更多 →</a>
+    </div>
+    <div class="xh-card-grid">
+      <article class="xh-card">
+        <div class="xh-card-tagrow">
+          <span class="xh-tag">奇幻</span><span class="xh-tag orange">冒险</span><span class="xh-tag">高热度</span>
+        </div>
+        <h3>迷宮飯 · 第二季</h3>
+        <p>迷宫探索与魔物料理的奇妙组合，本季新增角色让队伍关系更复杂，料理场面依旧下饭。适合喜欢奇幻冒险与轻松节奏的观众。</p>
+        <div class="xh-card-meta"><span>评分 9.2</span><span>更新至第6话</span></div>
+      </article>
+      <article class="xh-card">
+        <div class="xh-card-tagrow">
+          <span class="xh-tag">恋爱</span><span class="xh-tag orange">校园</span><span class="xh-tag">新番</span>
+        </div>
+        <h3>跃动青春 · 毕业篇</h3>
+        <p>细腻的校园群像剧，毕业季的情感收束让不少番友直呼真实。对白自然、作画稳定，适合喜欢慢节奏青春故事的观众。</p>
+        <div class="xh-card-meta"><span>评分 8.9</span><span>更新至第10话</span></div>
+      </article>
+      <article class="xh-card">
+        <div class="xh-card-tagrow">
+          <span class="xh-tag">科幻</span><span class="xh-tag orange">悬疑</span><span class="xh-tag">口碑</span>
+        </div>
+        <h3>命运石之门 · 新编集</h3>
+        <p>经典时间线题材的重新剪辑版，画面细节有优化，适合老番友重温或新观众入坑。讨论区里关于世界线收束的帖子一直很活跃。</p>
+        <div class="xh-card-meta"><span>评分 9.6</span><span>全24话</span></div>
+      </article>
+      <article class="xh-card">
+        <div class="xh-card-tagrow">
+          <span class="xh-tag">运动</span><span class="xh-tag orange">热血</span><span class="xh-tag">剧场版</span>
+        </div>
+        <h3>灌篮高手 · 全国大赛</h3>
+        <p>山王战搬上大银幕，比赛节奏与分镜处理引发热议。不少番友表示在影院看哭了，适合原作粉和运动番爱好者。</p>
+        <div class="xh-card-meta"><span>评分 9.4</span><span>剧场版</span></div>
+      </article>
+      <article class="xh-card">
+        <div class="xh-card-tagrow">
+          <span class="xh-tag">治愈</span><span class="xh-tag orange">日常</span><span class="xh-tag">连载</span>
+        </div>
+        <h3>摇曳露营 · 冬季篇</h3>
+        <p>露营美食与冬日风景的组合，节奏舒缓、氛围安静。适合睡前放松或周末补番，评论区经常有人分享同款露营装备。</p>
+        <div class="xh-card-meta"><span>评分 9.1</span><span>更新至第5话</span></div>
+      </article>
+      <article class="xh-card">
+        <div class="xh-card-tagrow">
+          <span class="xh-tag">战斗</span><span class="xh-tag orange">热血</span><span class="xh-tag">人气</span>
+        </div>
+        <h3>咒术回战 · 死灭回游篇</h3>
+        <p>战斗作画密度高，角色能力设定持续展开。番友讨论集中在分镜表现和原作还原度上，适合喜欢高密度打斗的观众。</p>
+        <div class="xh-card-meta"><span>评分 8.7</span><span>更新至第14话</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 最新更新 -->
+<section id="update" style="background: var(--surface-soft);">
+  <div class="wrapper">
+    <div class="xh-section-head">
+      <h2>最新更新 · 今日追更动态</h2>
+      <span class="xh-sub">2026年11月7日 更新</span>
+    </div>
+    <div class="xh-update-list">
+      <div class="xh-update-item">
+        <span class="xh-update-time">11-07 18:00</span>
+        <div class="xh-update-body">
+          <h4>《异世界食堂·续》第8话上线</h4>
+          <p>本集主打冬季限定料理，新客人来自魔王城，评论区已出现料理考据帖。</p>
+        </div>
+      </div>
+      <div class="xh-update-item">
+        <span class="xh-update-time">11-07 16:30</span>
+        <div class="xh-update-body">
+          <h4>《时光代理人 第三季》第5话更新</h4>
+          <p>时间线出现新的交叉点，番友讨论区关于“照片伏笔”的猜测帖热度上升。</p>
+        </div>
+      </div>
+      <div class="xh-update-item">
+        <span class="xh-update-time">11-07 12:00</span>
+        <div class="xh-update-body">
+          <h4>《跃动青春·毕业篇》第10话</h4>
+          <p>毕业典礼场景播出，社交平台出现大量截图分享，评分维持在高位。</p>
+        </div>
+      </div>
+      <div class="xh-update-item">
+        <span class="xh-update-time">11-07 10:15</span>
+        <div class="xh-update-body">
+          <h4>《摇曳露营·冬季篇》第5话</h4>
+          <p>新露营场取景公开，官方同步释出圣地巡礼地图，番友开始规划冬季行程。</p>
+        </div>
+      </div>
+      <div class="xh-update-item">
+        <span class="xh-update-time">11-06 21:00</span>
+        <div class="xh-update-body">
+          <h4>《迷宫饭·第二季》第6话</h4>
+          <p>新魔物料理登场，制作组在片尾附上简易食谱，弹幕里全是“看饿了”。</p>
+        </div>
+      </div>
+      <div class="xh-update-item">
+        <span class="xh-update-time">11-06 19:20</span>
+        <div class="xh-update-body">
+          <h4>《咒术回战·死灭回游篇》第14话</h4>
+          <p>战斗作画引发讨论，番友对分镜节奏评价两极，但热度继续上升。</p>
+        </div>
+      </div>
+      <div class="xh-update-item">
+        <span class="xh-update-time">11-06 14:00</span>
+        <div class="xh-update-body">
+          <h4>《葬送的芙莉莲》特别篇预告</h4>
+          <p>官方发布新视觉图，预计明年1月播出，评论区已经开始猜测剧情走向。</p>
+        </div>
+      </div>
+      <div class="xh-update-item">
+        <span class="xh-update-time">11-05 20:00</span>
+        <div class="xh-update-body">
+          <h4>《排球少年!!》新作短篇动画</h4>
+          <p>官方释出15秒特报，讲述日向与影山高中毕业后的短篇故事，番友表示期待。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 分类入口 -->
+<section id="category">
+  <div class="wrapper">
+    <div class="xh-section-head">
+      <h2>分类入口 · 按口味找番</h2>
+      <a href="/#category" class="xh-more-link">全部标签 →</a>
+    </div>
+    <div class="xh-cat-grid">
+      <a href="/#category" class="xh-cat-item">热血战斗</a>
+      <a href="/#category" class="xh-cat-item">奇幻冒险</a>
+      <a href="/#category" class="xh-cat-item">恋爱校园</a>
+      <a href="/#category" class="xh-cat-item">治愈日常</a>
+      <a href="/#category" class="xh-cat-item">悬疑推理</a>
+      <a href="/#category" class="xh-cat-item">科幻机甲</a>
+      <a href="/#category" class="xh-cat-item">运动竞技</a>
+      <a href="/#category" class="xh-cat-item">声优索引</a>
+    </div>
+  </div>
+</section>
+
+<!-- 深度解析 -->
+<section id="deep" style="background: var(--surface-soft);">
+  <div class="wrapper">
+    <div class="xh-section-head">
+      <h2>深度解析 · 稀饭动漫的追番视角</h2>
+      <span class="xh-sub">编辑：番组观察员</span>
+    </div>
+    <div class="xh-deep">
+      <h3>为什么“稀饭动漫”成为一个追番讨论的入口</h3>
+      <p>“稀饭动漫”在番友语境里并不特指某一部作品，更像是一种轻松、有偏好的看番态度。围绕这个词，读者通常想找的是：近期有什么值得看的番、某个题材有没有口碑稳定的作品、某位声优或制作公司的新作表现如何，以及去哪里和同好聊剧情。这个专题页正是为这些需求整理出的内容入口。</p>
+      <p>从内容结构上，我们把追番决策拆成几个自然步骤：先看热门推荐了解近期讨论度，再通过最新更新判断追更节奏，接着用分类入口缩小范围，最后在深度解析和评论里看具体评价。这样无论是补旧番还是追新番，都能按自己的节奏浏览，而不是被零散信息推着走。</p>
+      <h3>题材与类型：不只有“霸权番”</h3>
+      <p>热门番剧固然集中了讨论度，但追番体验往往取决于题材匹配。比如喜欢慢节奏的观众，可能在治愈日常类里找到更舒服的观看体验；偏爱强情节的观众，则更关注悬疑推理或战斗番的展开密度。稀饭动漫这个页面在推荐卡片里保留了题材标签，就是为了让不同偏好的番友能快速判断“对不对胃口”。</p>
+      <p>以近期更新为例，奇幻冒险类的《迷宫饭》第二季延续了料理与迷宫探索的组合，适合轻松观看；恋爱校园类的《跃动青春》毕业篇则更依赖情感细节的铺陈，适合安静补番。两种节奏没有高下之分，关键是和观看场景匹配。</p>
+      <h3>声优与制作公司：追番的隐藏线索</h3>
+      <p>不少番友选番时会先看制作公司或声优阵容。制作公司往往决定了作品在作画、分镜上的基础风格，而声优的表演则直接影响角色魅力。比如同一制作公司的作品，在动作场面和日常演出的节奏上会有一定的延续性；而熟悉声优的观众，也能从预告片的声音里提前判断角色气质。稀饭动漫的分类入口里保留了声优索引和制作公司入口，方便按这些线索扩展浏览。</p>
+      <h3>节奏与消费体验：追更还是补番</h3>
+      <p>追更和补番是两种不同的消费方式。追更依赖每周固定更新，讨论也集中在当周剧情；补番则更看重整体节奏是否连贯。对于更新中的作品，我们会标注当前话数，帮助判断是否适合入坑；对于已完结的作品，则更侧重整体评价和补番建议。番友在评论区分享的“补番顺序”“看到第几话开始上头”这类信息，往往比单纯评分更有参考价值。</p>
+      <h3>读者搜索这个词时，通常想了解什么</h3>
+      <p>从搜索意图来看，有人想找稀饭动漫相关的社区讨论，有人想确认某部番是否值得看，也有人希望按题材或声优找到同类作品。这个页面把推荐、更新、解析、问答和评论放在同一条浏览路径上，就是希望减少来回跳转。如果你也在找下一部要看的番，不妨从热门推荐或分类入口开始，再结合评论区里的真实反馈做判断。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 体验指南 -->
+<section id="guide">
+  <div class="wrapper">
+    <div class="xh-section-head">
+      <h2>体验指南 · 如何用好这个页面</h2>
+      <span class="xh-sub">给新番友的浏览建议</span>
+    </div>
+    <div class="xh-guide-grid">
+      <div class="xh-guide-item">
+        <h4>按更新节奏筛选</h4>
+        <p>先看“最新更新”了解哪些作品在连载，再决定是追更还是等完结后补番。</p>
+      </div>
+      <div class="xh-guide-item">
+        <h4>用分类缩小范围</h4>
+        <p>题材标签和声优索引可以快速排除不感兴趣的类型，减少盲目试看的时间。</p>
+      </div>
+      <div class="xh-guide-item">
+        <h4>关注评论区真实反馈</h4>
+        <p>番友讨论里常有具体的观看体验，比如第几话开始精彩、作画是否稳定，比评分更直观。</p>
+      </div>
+      <div class="xh-guide-item">
+        <h4>移动端阅读友好</h4>
+        <p>页面针对手机浏览做了适配，通勤或睡前刷一刷推荐和短评都很方便。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background: var(--surface-soft);">
+  <div class="wrapper">
+    <div class="xh-section-head">
+      <h2>常见问题 · 番友常问的几件事</h2>
+      <span class="xh-sub">整理自讨论区高频提问</span>
+    </div>
+    <div class="xh-faq-list">
+      <details class="xh-faq-item">
+        <summary>稀饭动漫这个页面主要提供什么内容？</summary>
+        <p>这个页面围绕追番推荐和番剧讨论整理内容，包括热门番推荐、最新更新动态、题材分类入口、深度解析、常见问答和番友评论。适合想找下一部番、了解更新节奏或看真实评价的观众，也可以作为补番时的参考清单。</p>
+      </details>
+      <details class="xh-faq-item">
+        <summary>最近有什么值得追的新番？</summary>
+        <p>从近期讨论度看，《迷宫饭》第二季、《跃动青春》毕业篇和《时光代理人》第三季都有稳定的番友讨论。喜欢轻松治愈可以优先看《摇曳露营》冬季篇，偏好高密度战斗则可以关注《咒术回战》死灭回游篇。建议结合自己的观看场景选择。</p>
+      </details>
+      <details class="xh-faq-item">
+        <summary>补旧番应该按什么顺序看？</summary>
+        <p>如果是系列作品，一般建议按播出顺序观看，便于理解人物关系和设定铺垫。独立作品则可以从口碑较稳的季度或篇章入手。评论区里常有番友分享“从第几话开始上头”的经验，可以作为补番顺序的参考，但不必完全照搬。</p>
+      </details>
+      <details class="xh-faq-item">
+        <summary>如何根据声优找番？</summary>
+        <p>可以先在分类入口找到声优索引，再结合题材标签缩小范围。同一名声优在不同作品中的声线差异往往能带来不同的观看乐趣，番友讨论里也常有人对比同一声优的多个角色。建议先看预告片或片段感受声线，再决定是否追完整部。</p>
+      </details>
+      <details class="xh-faq-item">
+        <summary>页面里的评分和更新信息是实时的吗？</summary>
+        <p>页面中的评分和更新话数用于展示内容消费参考，会随专题维护更新。如果你需要确认具体平台的播出时间，建议以官方公告或播出平台信息为准。这个页面的重点在于提供筛选和讨论入口，而不是替代官方播出信息。</p>
+      </details>
+      <details class="xh-faq-item">
+        <summary>可以在评论区讨论剧情吗？</summary>
+        <p>可以。评论区主要用于番友交流观看感受、讨论剧情和分享推荐。建议在涉及关键剧情时标注“含剧透”，方便还没看到最新话的番友选择性阅读。也欢迎分享补番顺序、制作公司风格这类偏分析的讨论。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 评论 -->
+<section id="comment">
+  <div class="wrapper">
+    <div class="xh-section-head">
+      <h2>番友讨论 · 近期评论精选</h2>
+      <span class="xh-sub">来自讨论区的真实声音</span>
+    </div>
+    <div class="xh-comment-grid">
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">番</div><span class="xh-comment-name">番剧小栈</span><span class="xh-comment-date">11-06</span></div>
+        <p>迷宫饭第二季的料理作画还是稳，本集那个汤看着太香了。不过节奏比第一季慢了一点，适合下饭看。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">夏</div><span class="xh-comment-name">夏目友人</span><span class="xh-comment-date">11-05</span></div>
+        <p>跃动青春毕业篇第10话真的绷不住，分镜和台词都太克制了。这种细腻的校园群像现在不多见。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">石</div><span class="xh-comment-name">石头门老粉</span><span class="xh-comment-date">11-05</span></div>
+        <p>命运石之门新编集版画面确实有提升，但老观众可能更在意有没有新内容。目前看还是重制为主，入坑可以。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">露</div><span class="xh-comment-name">露营少女</span><span class="xh-comment-date">11-04</span></div>
+        <p>摇曳露营冬季篇的氛围太舒服了，看完直接想去露营。不过现实中冬天露营太冷，还是看看番就好。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">咒</div><span class="xh-comment-name">咒术打工人</span><span class="xh-comment-date">11-04</span></div>
+        <p>死灭回游篇作画确实猛，但分镜有时候跳得有点快，纯动画党可能会懵。建议配合原作讨论一起看。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">时</div><span class="xh-comment-name">时光旅人</span><span class="xh-comment-date">11-03</span></div>
+        <p>时光代理人第三季的伏笔密度比前两季还高，评论区已经有人整理时间线了，建议看完再刷讨论。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">排</div><span class="xh-comment-name">排球少年基地</span><span class="xh-comment-date">11-03</span></div>
+        <p>灌篮高手全国大赛剧场版在影院看太值了，比赛节奏控制得很好。希望排球也能出类似的完整剧场版。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">芙</div><span class="xh-comment-name">芙莉莲观察员</span><span class="xh-comment-date">11-02</span></div>
+        <p>葬送的芙莉莲特别篇预告里那个镜头很在意，希望能把漫画里某段剧情补完，动画组应该不会让人失望。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">异</div><span class="xh-comment-name">异世界食堂常客</span><span class="xh-comment-date">11-02</span></div>
+        <p>这集新客人是魔王城来的，设定上有点意思。不过料理步骤还是偏简略，想看更详细的美食特写。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">补</div><span class="xh-comment-name">补番中</span><span class="xh-comment-date">11-01</span></div>
+        <p>刚补完命运石之门，想找类似的悬疑时间线番，评论区有推荐吗？不要纯血腥的那种。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">声</div><span class="xh-comment-name">声优控</span><span class="xh-comment-date">11-01</span></div>
+        <p>这季好几部番的主角声优都挺惊喜的，特别是迷宫饭新角色的声线很有辨识度，希望分类页能加声优索引。</p>
+      </div>
+      <div class="xh-comment">
+        <div class="xh-comment-head"><div class="xh-avatar">路</div><span class="xh-comment-name">路人番友</span><span class="xh-comment-date">10-31</span></div>
+        <p>页面排版挺清楚的，找番不用来回跳。不过希望更新列表能标一下总集数，有时候想知道还剩几话。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 资讯 -->
+<section id="news" style="background: var(--surface-soft);">
+  <div class="wrapper">
+    <div class="xh-section-head">
+      <h2>相关资讯 · 番剧动态速览</h2>
+      <a href="/#news" class="xh-more-link">更多资讯 →</a>
+    </div>
+    <div class="xh-news-grid">
+      <article class="xh-news-card">
+        <div class="date">2026-11-06</div>
+        <h4>《葬送的芙莉莲》特别篇定档明年1月</h4>
+        <p>官方发布新视觉图与15秒预告，特别篇将围绕原作人气章节展开，具体播出时间待后续公布。</p>
+      </article>
+      <article class="xh-news-card">
+        <div class="date">2026-11-05</div>
+        <h4>《迷宫饭》第二季追加新角色声优</h4>
+        <p>制作组公布两名新角色的声优阵容，将在后续剧集中登场，番友讨论区已经开始猜测剧情走向。</p>
+      </article>
+      <article class="xh-news-card">
+        <div class="date">2026-11-04</div>
+        <h4>《时光代理人》第三季登顶周讨论榜</h4>
+        <p>凭借时间线伏笔和紧凑叙事，该作成为本周讨论度最高的连载番之一，相关解析帖数量明显上升。</p>
+      </article>
+      <article class="xh-news-card">
+        <div class="date">2026-11-03</div>
+        <h4>《排球少年!!》新作短篇动画公开特报</h4>
+        <p>短篇将讲述高中毕业后的故事，官方释出15秒特报，具体上线时间尚未公开，番友表示期待。</p>
+      </article>
+      <article class="xh-news-card">
+        <div class="date">2026-11-02</div>
+        <h4>《摇曳露营》冬季篇圣地巡礼地图发布</h4>
+        <p>官方联合地方观光协会发布取景地地图，涵盖本季新登场的露营场，吸引不少番友规划行程。</p>
+      </article>
+      <article class="xh-news-card">
+        <div class="date">2026-11-01</div>
+        <h4>稀饭动漫专题页新增声优索引入口</h4>
+        <p>为方便按声优选番，专题页分类入口新增声优索引，后续将补充制作公司标签与作品关联信息。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+  <div class="wrapper">
+    <div class="xh-footer-grid">
+      <div>
+        <h5>稀饭动漫</h5>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">一个面向追番爱好者的内容专题页，整理推荐、更新、解析和讨论，帮助番友更轻松地找到下一部想看的作品。</p>
+      </div>
+      <div>
+        <h5>内容导航</h5>
+        <a href="/#hot">热门推荐</a>
+        <a href="/#update">最新更新</a>
+        <a href="/#category">分类入口</a>
+        <a href="/#deep">深度解析</a>
+      </div>
+      <div>
+        <h5>社区</h5>
+        <a href="/#comment">番友讨论</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#guide">体验指南</a>
+      </div>
+      <div>
+        <h5>友情链接</h5>
+        <a href="/#">动漫资料站（占位）</a>
+        <a href="/#">番剧日历（占位）</a>
+        <a href="/#">声优图鉴（占位）</a>
+      </div>
+    </div>
+    <div class="xh-footer-bottom">
+      <span>© 2026 稀饭动漫 · 内容专题页</span>
+      <span>页面信息仅供参考，具体播出时间以官方为准。</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+          </html>
